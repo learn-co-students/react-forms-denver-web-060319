@@ -5,18 +5,15 @@ import Banner from "./Banner"
 
 export default class Example extends React.Component{
   state = {
-    firstName: "David",
-    lastName: "Boehmer"
+    firstName: "",
+    lastName: ""
   }
 
-  updateFirstName = event => {
+ 
+
+  updateName = event => {
     this.setState ({
-      firstName: event.target.value
-    })
-  }
-  updateLastName = event => {
-    this.setState ({
-      lastName: event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -43,14 +40,15 @@ export default class Example extends React.Component{
     return whichColor[l];
   }
 
+  
+
   render() {
- 
     return(
       <div>
         <Banner className={this.changeColor(this.changePastSeven())} fullName={this.state.firstName + " " + this.state.lastName} />
         <form>
-          <input onChange={this.updateFirstName} type="text" name="first-name" value={this.state.firstName} />
-          <input onChange={this.updateLastName} type="text" name="last-name" value={this.state.lastName} />
+          <input onChange={this.updateName} type="text" name="firstName" value={this.state.firstName} />
+          <input onChange={this.updateName} type="text" name="lastName" value={this.state.lastName} />
         </form>
       </div>
     )
